@@ -36,5 +36,7 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-#endif
+stack_t *add_node_push(stack_t **head, const int n);
+size_t pall_list(const stack_t *head);
 
+#endif
