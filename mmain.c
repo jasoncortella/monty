@@ -26,19 +26,20 @@ int main(int argc, char **argv)
 	{
 		line_number = i + 1;
 		printf("line %i: %s", line_number, line);
-		opcode = line[0] // push
-		argument = line[1] // 4
-		arr =
-			{"push", add_node_push},
-			{"pall", pall_list}
-		if (!valid_command)
+		opcode = strtok(line, " "); // push
+		argument = atoi(line); // strtok modifies line, cuts first arg
+		if (!valid_opcode(opcode))
+		{
 	   		dprintf(2, "L%d: unknown instruction %s\n", line_number, opcode);
 			exit(EXIT_FAILURE);
-		if (valid_argument)
-			push(STACK, argument)
-		else:
+		}
+		if (valid_argument(argument))
+			push(STACK, argument);
+		else
+		{
 	   		dprintf(2, "L%d: usage: push integer", line_number);
 			exit(EXIT_FAILURE);
+		}
 		i++;
 	}
 
