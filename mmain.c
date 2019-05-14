@@ -49,6 +49,7 @@ int main(int argc, char **argv)
 		if (opresult == -1) /* if no match found */
 		{
 			dprintf(2, "L%d: unknown instruction %s\n", line_number, opcode);
+			fclose(monty_file);
 			free_stack(stack);
 			free(line);
 			exit(EXIT_FAILURE);
