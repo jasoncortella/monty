@@ -41,10 +41,11 @@ stack_t *push_add_node(stack_t **stack, unsigned int line_number)
 size_t pall_list(stack_t **stack, unsigned int line_number)
 {
 	size_t i;
+	stack_t current = *stack;
 
-	if (!head)
+	if (!current)
 		return (0);
-	for (i = 0; head; i++, head = head->next)
-		printf("%d\n", head->n);
+	for (i = 0; current; i++, current = current->next)
+		printf("%d\n", current->n);
 	return (i);
 }
