@@ -1,7 +1,5 @@
 #include "monty.h"
 
-char *bcode;
-
 /**
  * main - entry point
  * @argc: argument count
@@ -11,11 +9,13 @@ char *bcode;
  */
 int main(int argc, char **argv)
 {
-	register int i = 0;
+	register int i = 0, opresult;
 	FILE *monty_file;
 	ssize_t read;
-	char *line, opcode;
+	char *line, *opcode;
 	size_t len = 0;
+	unsigned int line_number = 0;
+	stack_t **stack = NULL;
 
 	/* validate correct num of arguments */
 	if (argc != 2)
@@ -33,13 +33,19 @@ int main(int argc, char **argv)
 	}
 	while ((read = getline(&line, &len, monty_file)) != -1)
 	{
-		bcode = line; //set global variable to getline input
 		line_number = i + 1;
 		printf("line %i: %s", line_number, line);
-		opresult = op_helper(line_number); // find and execute op
-		if (opresult == -1) // if no match found
+		opcode = strtok(line, " ");
+		if (strcmp(opcode, "push") == 0)
 		{
-	   		dprintf(2, "L%d: unknown instruction %s\n", line_number, opcode);
+			push_add_node(stack, line);
+			i++;
+			continue;
+		}
+		opresult = op_helper(stack, line, line_number); /* find and execute op */
+		if (opresult == -1) /* if no match found */
+		{
+			dprintf(2, "L%d: unknown instruction %s\n", line_number, opcode);
 			exit(EXIT_FAILURE);
 		}
 		i++;

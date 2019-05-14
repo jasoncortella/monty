@@ -6,8 +6,6 @@
 #include <string.h>
 #include <stdlib.h>
 
-extern char *bcode;
-
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -38,8 +36,8 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-stack_t *push_add_node(stack_t **stack, unsigned int line_number);
-size_t pall_list(stack_t **stack, unsigned int line_number);
-int op_helper(int line_number);
+stack_t *push_add_node(stack_t **stack, char *line);
+void pall_list(stack_t **stack, unsigned int line_number);
+int op_helper(stack_t **stack, char *line, int line_number);
 
 #endif
