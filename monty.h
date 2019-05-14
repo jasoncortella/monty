@@ -40,6 +40,6 @@ typedef struct instruction_s
 
 stack_t *push_add_node(stack_t **stack, unsigned int line_number);
 size_t pall_list(stack_t **stack, unsigned int line_number);
-int op_helper(char *opcode);
+int op_helper(int line_number);
 
 #endif

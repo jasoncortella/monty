@@ -36,7 +36,7 @@ int main(int argc, char **argv)
 		bcode = line; //set global variable to getline input
 		line_number = i + 1;
 		printf("line %i: %s", line_number, line);
-		opresult = op_helper(line); // find and execute op
+		opresult = op_helper(line_number); // find and execute op
 		if (opresult == -1) // if no match found
 		{
 	   		dprintf(2, "L%d: unknown instruction %s\n", line_number, opcode);
