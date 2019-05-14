@@ -19,6 +19,7 @@ stack_t *push_add_node(stack_t **stack, char *line)
 		exit(EXIT_FAILURE);
 	}
 */
+
 	n = atoi(line); /* strtok modifies line, cuts first arg */
 	new->n = n;
 	new->next = *stack;

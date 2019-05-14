@@ -12,10 +12,10 @@ int main(int argc, char **argv)
 	register int i = 0, opresult;
 	FILE *monty_file;
 	ssize_t read;
-	char *line, *opcode;
+	char *line, *opcode, *copy;
 	size_t len = 0;
 	unsigned int line_number = 0;
-	stack_t **stack = NULL;
+	stack_t **stack = malloc(sizeof(stack_t));
 
 	/* validate correct num of arguments */
 	if (argc != 2)
@@ -38,11 +38,12 @@ int main(int argc, char **argv)
 		opcode = strtok(line, " ");
 		if (strcmp(opcode, "push") == 0)
 		{
-			push_add_node(stack, line);
+			copy = strtok(NULL, " ");
+			push_add_node(stack, copy);
 			i++;
 			continue;
 		}
-		opresult = op_helper(stack, line, line_number); /* find and execute op */
+		opresult = op_helper(stack, opcode, line_number); /* find and execute op */
 		if (opresult == -1) /* if no match found */
 		{
 			dprintf(2, "L%d: unknown instruction %s\n", line_number, opcode);

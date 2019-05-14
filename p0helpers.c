@@ -32,13 +32,16 @@ int op_helper(stack_t **stack, char *bcode, int line_number)
         };
 	char *op;
 
-	op = strtok(bcode, " ");
+	op = strtok(bcode, "\n");
+
 	for (i = 0; itbl[i].opcode; i++)
+	{
 		if (strcmp(op, itbl[i].opcode) == 0)
 		{
 			itbl[i].f(stack, line_number);
 			op_ret = 0;
 			break;
 		}
+	}
 	return (op_ret);
 }
