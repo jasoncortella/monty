@@ -5,11 +5,10 @@
  * @ptbl: table of functions
  * Return: -1 if op not found,
  *          0 if op executed successfully,
- *          1 if op found but not successful,
  */
 int op_helper(char *opcode)
 {
-	int i, op_ret = -1;
+	int i, op_ret = -1; // default return -1 if no match found
 	instruction_t itbl[] = {
                 {"push", add_node_push},
                 {"pall", pall_list},
@@ -21,8 +20,6 @@ int op_helper(char *opcode)
 		{
 			if (itbl[i].f(stack, line_number)) //op successful
 				op_ret = 0;
-			else //op found, but failed
-				op_ret = 1;
 			break;
 		}
 	return (op_ret);

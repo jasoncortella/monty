@@ -6,6 +6,8 @@
 #include <string.h>
 #include <stdlib.h>
 
+extern char *bcode;
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer

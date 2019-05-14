@@ -1,5 +1,14 @@
 #include "monty.h"
 
+char *bcode;
+
+/**
+ * main - entry point
+ * @argc: argument count
+ * @argv: list of arguments
+ *
+ * Return: As of yet undecided
+ */
 int main(int argc, char **argv)
 {
 	register int i = 0;
@@ -24,25 +33,17 @@ int main(int argc, char **argv)
 	}
 	while ((read = getline(&line, &len, monty_file)) != -1)
 	{
+		bcode = line; //set global variable to getline input
 		line_number = i + 1;
 		printf("line %i: %s", line_number, line);
-		opcode = strtok(line, " "); // push
-		argument = atoi(line); // strtok modifies line, cuts first arg
-		if (!valid_opcode(opcode))
+		opresult = op_helper(line); // find and execute op
+		if (opresult == -1) // if no match found
 		{
 	   		dprintf(2, "L%d: unknown instruction %s\n", line_number, opcode);
 			exit(EXIT_FAILURE);
 		}
-		if (valid_argument(argument))
-			push(STACK, argument);
-		else
-		{
-	   		dprintf(2, "L%d: usage: push integer", line_number);
-			exit(EXIT_FAILURE);
-		}
 		i++;
 	}
-
 	fclose(monty_file);
 	return (EXIT_SUCCESS);
 }
