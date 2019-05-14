@@ -39,5 +39,6 @@ typedef struct instruction_s
 stack_t *push_add_node(stack_t **stack, char *line);
 void pall_list(stack_t **stack, unsigned int line_number);
 int op_helper(stack_t **stack, char *line, int line_number);
+void free_stack(stack_t *head);
 
 #endif

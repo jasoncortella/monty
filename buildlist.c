@@ -16,10 +16,10 @@ stack_t *push_add_node(stack_t **stack, char *line)
 /*	if (*pseudo* line is invalid) //note emsg below is unique to push
 	{
 		dprintf(2, "L%d: usage: push integer", line_number);
+		free_dlistint(*stack);
 		exit(EXIT_FAILURE);
 	}
 */
-
 	n = atoi(line); /* strtok modifies line, cuts first arg */
 	new->n = n;
 	new->next = *stack;
@@ -28,6 +28,23 @@ stack_t *push_add_node(stack_t **stack, char *line)
 		new->next->prev = new;
 	*stack = new;
 	return (new);
+}
+
+/**
+ * free_stack - frees a stack_t list.
+ * @head: Pointer to the head of the list
+ * Return: Nothing
+ */
+void free_stack(stack_t *head)
+{
+	stack_t *tmp, *current = head;
+
+	while (current)
+	{
+		tmp = current->next;
+		free(current);
+		current = tmp;
+	}
 }
 
 /**
