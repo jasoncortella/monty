@@ -37,8 +37,22 @@ void mod_list(stack_t **stack, unsigned int line_number)
  */
 void pchar_list(stack_t **stack, unsigned int line_number)
 {
-	(void)stack;
-	(void)line_number;
+	stack_t *current = *stack;
+
+	if (!current)
+	{
+		dprintf(2, "L%u: can't pchar, stack empty\n", line_number);
+		garbage_collection();
+		exit(EXIT_FAILURE);
+	}
+	if ((current->n < 0) | (current->n > 127))
+	{
+		dprintf(2, "L%u: can't pchar, value out of range\n", line_number);
+		garbage_collection();
+		exit(EXIT_FAILURE);
+	}
+	putchar(current->n);
+	putchar('\n');
 }
 
 /**
