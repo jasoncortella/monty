@@ -11,7 +11,10 @@ stack_t *push_add_node(char *value)
 	stack_t *new = malloc(sizeof(stack_t));
 
 	if (!new)
-		return (NULL);
+	{
+		dprintf(STDERR_FILENO, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
 	/* need to check if valid second argument */
 	if (0)
 	{
