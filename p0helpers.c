@@ -1,5 +1,7 @@
 #include "monty.h"
 
+info_t info;
+
 /**
  *op_helper - finds and executes a function based on opcode
  * @ptbl: table of functions

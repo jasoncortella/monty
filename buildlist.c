@@ -1,12 +1,14 @@
 #include "monty.h"
 
+info_t info;
+
 /**
  * push_add_node - adds a new node at the beginning of a stack_t list.
  * @head: Pointer to the head of the list
  * @n: The value of the new node
  * Return: the address of the new element, or NULL if it failed
  */
-stack_t *push_add_node(stack_t **stack, char *line)
+stack_t *push_add_node(stack_t **stack, char *copy)
 {
 	stack_t *new = malloc(sizeof(stack_t));
 	int n;
@@ -20,7 +22,7 @@ stack_t *push_add_node(stack_t **stack, char *line)
 		exit(EXIT_FAILURE);
 	}
 */
-	n = atoi(line); /* strtok modifies line, cuts first arg */
+	n = atoi(copy); /* strtok modifies line, cuts first arg */
 	new->n = n;
 	new->next = *stack;
 	new->prev = NULL;

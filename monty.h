@@ -36,7 +36,22 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-stack_t *push_add_node(stack_t **stack, char *line);
+/**
+ * struct info_s - info to access globally
+ * @monty_file: file
+ * @line: line
+ *
+ * Description: file and line
+ */
+typedef struct info_s
+{
+        FILE *monty_file;
+	char *line;
+} info_t;
+
+extern info_t info;
+
+stack_t *push_add_node(stack_t **stack, char *copy);
 void pall_list(stack_t **stack, unsigned int line_number);
 int op_helper(stack_t **stack, char *line, int line_number);
 void free_stack(stack_t *head);
