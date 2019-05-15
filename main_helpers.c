@@ -3,7 +3,7 @@
 /**
  * validate_and_open - validate user input and open file
  * @argc: argument count
- * @filename: name of file to be open
+ * @filename: name of file to be opened
  */
 void validate_and_open(int argc, char *filename)
 {
@@ -23,40 +23,32 @@ void validate_and_open(int argc, char *filename)
 
 
 /**
- * read_lines - read instructions from file and processes it
+ * read_lines - read instructions from file and process it
  */
 void read_lines(void)
 {
-	register int opresult = 0;
 	size_t len = 0;
 	ssize_t read;
-	char *opcode, *copy;
+	char *opcode, *value;
 
 	while ((read = getline(&info.line, &len, info.monty_file)) != -1)
 	{
 		opcode = strtok(info.line, " ");
-		if (*opcode == '#')
-		{
-			info.line_number++;
-			continue;
-		}
-		if (strcmp(opcode, "\n") == 0)
+		if (*opcode == '#' || !strcmp(opcode, "\n"))
 		{
 			info.line_number++;
 			continue;
 		}
 		if (strcmp(opcode, "push") == 0)
 		{
-			copy = strtok(NULL, " ");
-			if (info.queue_status == false)
-				push_add_node(copy);
-			else
-				push_add_node_end(copy);
+			value = strtok(NULL, " ");
+			info.queue_status
+				? push_add_node_end(value)
+				: push_add_node(value);
 			info.line_number++;
 			continue;
 		}
-		opresult = op_helper(&info.stack, opcode);
-		if (opresult == -1)
+		if (op_helper(&info.stack, opcode) == -1)
 		{
 			dprintf(STDERR_FILENO, "L%d: ", info.line_number);
 			dprintf(STDERR_FILENO, "unknown instruction %s\n", opcode);
@@ -114,8 +106,8 @@ int op_helper(stack_t **stack, char *bcode)
 }
 
 /**
- * free_stack - frees a stack_t list.
- * @head: Pointer to the head of the list
+ * free_stack - frees a stack_t list
+ * @head: pointer to the head of the list
  */
 void free_stack(stack_t *head)
 {
