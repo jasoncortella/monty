@@ -85,17 +85,22 @@ void pstr_list(stack_t **stack, unsigned int line_number)
  */
 void rotl_list(stack_t **stack, unsigned int line_number)
 {
-	stack_t *current = *stack, *next = current->next;
-	int tmp = current->n;
+	stack_t *current = *stack, *next;
+	int tmp;
 
 	(void)line_number;
-	while (current->next)
+	if (current)
 	{
-		current->n = next->n;
-		current = next;
 		next = current->next;
+		tmp = current->n;
+		while (current->next)
+		{
+			current->n = next->n;
+			current = next;
+			next = current->next;
+		}
+		current->n = tmp;
 	}
-	current->n = tmp;
 }
 
 /**
