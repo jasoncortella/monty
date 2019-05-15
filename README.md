@@ -33,7 +33,7 @@ What you should learn from this project:
 * The opcode add adds the top two elements of the stack.
 
 
-### [5. sub](./build_list2.c)
+### [5. nop](./build_list2.c)
 * The opcode nop doesn’t do anything.
 
 
