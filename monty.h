@@ -45,6 +45,7 @@ typedef struct instruction_s
  * @line: line
  * @stack: stack
  * @line_number: line number
+ * @queue_status: off by default
  * Description: file and line
  */
 typedef struct info_s
@@ -53,6 +54,7 @@ typedef struct info_s
 	char *line;
 	stack_t *stack;
 	unsigned int line_number;
+	_Bool queue_status;
 } info_t;
 
 extern info_t info;
@@ -91,5 +93,8 @@ void garbage_collection(void);
 
 /* string_helpers */
 _Bool is_valid_num(char *str);
+
+/* main */
+void init_info(void);
 
 #endif
