@@ -2,13 +2,11 @@
 
 info_t info = {NULL, NULL, NULL, 0};
 
-
 /**
  * main - entry point
  * @argc: argument count
  * @argv: list of arguments
- *
- * Return: As of yet undecided
+ * Return: 0 on success, 1 on error
  */
 int main(int argc, char **argv)
 {

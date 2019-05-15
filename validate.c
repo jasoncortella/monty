@@ -1,5 +1,10 @@
 #include "monty.h"
 
+/**
+ * validate_and_open - validate user input and open file
+ * @argc: argument count
+ * @filename: name of file to be open
+ */
 void validate_and_open(int argc, char *filename)
 {
 	if (argc != 2)

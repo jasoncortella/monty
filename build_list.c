@@ -2,11 +2,10 @@
 
 /**
  * push_add_node - adds a new node at the beginning of a stack_t list.
- * @head: Pointer to the head of the list
- * @n: The value of the new node
+ * @value: The value of the new node
  * Return: the address of the new element, or NULL if it failed
  */
-stack_t *push_add_node(stack_t **stack, char *copy)
+stack_t *push_add_node(char *value)
 {
 	register int n;
 	stack_t *new = malloc(sizeof(stack_t));
@@ -20,20 +19,19 @@ stack_t *push_add_node(stack_t **stack, char *copy)
 		garbage_collection();
 		exit(EXIT_FAILURE);
 	}
-	n = atoi(copy);
+	n = atoi(value);
 	new->n = n;
-	new->next = *stack;
+	new->next = info.stack;
 	new->prev = NULL;
 	if (new->next)
 		new->next->prev = new;
-	*stack = new;
+	info.stack = new;
 	return (new);
 }
 
 /**
  * free_stack - frees a stack_t list.
  * @head: Pointer to the head of the list
- * Return: Nothing
  */
 void free_stack(stack_t *head)
 {
@@ -49,7 +47,8 @@ void free_stack(stack_t *head)
 
 /**
  * pall_list - prints all the elements of a stack_t list.
- * @head: Pointer to the head of the list
+ * @stack: Pointer to the head of the list
+ * @line_number: line number of instruction
  * Return: Nothing
  */
 void pall_list(stack_t **stack, unsigned int line_number)

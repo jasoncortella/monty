@@ -1,5 +1,8 @@
 #include "monty.h"
 
+/**
+ * read_lines - read instructions from file and processes it
+ */
 void read_lines(void)
 {
 	register int i = 0, opresult = 0;
@@ -19,7 +22,7 @@ void read_lines(void)
 		if (strcmp(opcode, "push") == 0)
 		{
 			copy = strtok(NULL, " ");
-			push_add_node(&info.stack, copy);
+			push_add_node(copy);
 			i++;
 			continue;
 		}
