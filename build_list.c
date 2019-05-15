@@ -1,7 +1,5 @@
 #include "monty.h"
 
-info_t info;
-
 /**
  * push_add_node - adds a new node at the beginning of a stack_t list.
  * @head: Pointer to the head of the list
