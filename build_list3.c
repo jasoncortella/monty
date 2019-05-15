@@ -66,14 +66,11 @@ void pstr_list(stack_t **stack, unsigned int line_number)
 {
 	stack_t *current = *stack;
 
+	(void)line_number;
 	while (current && current-> n != 0)
 	{
 		if ((current->n < 0) | (current->n > 127))
-		{
-			dprintf(2, "L%u: can't pstr, value out of range\n", line_number);
-			garbage_collection();
-			exit(EXIT_FAILURE);
-		}
+			break;
 		putchar(current->n);
 		current = current->next;
 	}
