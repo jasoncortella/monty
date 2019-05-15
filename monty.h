@@ -55,14 +55,25 @@ typedef struct info_s
 
 extern info_t info;
 
-stack_t *push_add_node(char *copy);
+/* build_list */
+void push_add_node(char *copy);
 void pall_list(stack_t **stack, unsigned int line_number);
-int op_helper(stack_t **stack, char *line);
-void free_stack(stack_t *head);
+void pint_list(stack_t **stack, unsigned int line_number);
+void pop_list(stack_t **stack, unsigned int line_number);
+void swap_list(stack_t **stack, unsigned int line_number);
+
+/* build_list2 */
+void add_list(stack_t **stack, unsigned int line_number);
+void nop_list(stack_t **stack, unsigned int line_number);
+void sub_list(stack_t **stack, unsigned int line_number);
+void div_list(stack_t **stack, unsigned int line_number);
+void mul_list(stack_t **stack, unsigned int line_number);
 
 /* main_helpers */
 void validate_and_open(int argc, char *argv);
 void read_lines(void);
+int op_helper(stack_t **stack, char *line);
+void free_stack(stack_t *head);
 void garbage_collection(void);
 
 #endif
