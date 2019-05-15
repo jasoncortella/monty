@@ -50,7 +50,7 @@ void read_lines(void)
 			copy = strtok(NULL, " ");
 			if (info.queue_status == false)
 				push_add_node(copy);
-			else:
+			else
 				push_add_node_end(copy);
 			info.line_number++;
 			continue;
