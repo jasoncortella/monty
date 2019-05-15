@@ -48,7 +48,10 @@ void read_lines(void)
 		if (strcmp(opcode, "push") == 0)
 		{
 			copy = strtok(NULL, " ");
-			push_add_node(copy);
+			if (info.queue_status == false)
+				push_add_node(copy);
+			else:
+				push_add_node_end(copy);
 			info.line_number++;
 			continue;
 		}
