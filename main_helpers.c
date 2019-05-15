@@ -82,14 +82,13 @@ int op_helper(stack_t **stack, char *bcode)
 		{"sub", sub_list},
 		{"div", div_list},
 		{"mul", mul_list},
-		/*   {"mod", mod_list},
-		     {"pchar", pchar_list},
-		     {"pstr", pstr_list},
-		     {"rotl", rotl_list},
-		     {"rotr", rotr_list},
-		     {"stack", stack_list},
-		     {"queue", queue_list},
-		     */
+		{"mod", mod_list},
+		{"pchar", pchar_list},
+		{"pstr", pstr_list},
+		{"rotl", rotl_list},
+		{"rotr", rotr_list},
+		{"stack", set_stack},
+		{"queue", set_queue},
 		{NULL, NULL}
 	};
 

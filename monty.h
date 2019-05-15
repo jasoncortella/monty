@@ -69,6 +69,17 @@ void sub_list(stack_t **stack, unsigned int line_number);
 void div_list(stack_t **stack, unsigned int line_number);
 void mul_list(stack_t **stack, unsigned int line_number);
 
+/* build_list3 */
+void mod_list(stack_t **stack, unsigned int line_number);
+void pchar_list(stack_t **stack, unsigned int line_number);
+void pstr_list(stack_t **stack, unsigned int line_number);
+void rotl_list(stack_t **stack, unsigned int line_number);
+void rotr_list(stack_t **stack, unsigned int line_number);
+
+/* stack_and_queue */
+void set_stack(stack_t **stack, unsigned int line_number);
+void set_queue(stack_t **stack, unsigned int line_number);
+
 /* main_helpers */
 void validate_and_open(int argc, char *argv);
 void read_lines(void);
