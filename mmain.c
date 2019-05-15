@@ -17,6 +17,9 @@ int main(int argc, char **argv)
 	return (EXIT_SUCCESS);
 }
 
+/**
+ * init_info - initialize info struct with default values
+ */
 void init_info(void)
 {
 	info.monty_file = NULL;

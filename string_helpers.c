@@ -2,6 +2,7 @@
 
 /**
  * is_valid_num - checks if char arr is a valid number
+ * @str: input string
  * Return: true or false
  */
 _Bool is_valid_num(char *str)
