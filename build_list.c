@@ -59,8 +59,15 @@ void pall_list(stack_t **stack, unsigned int line_number)
  */
 void pint_list(stack_t **stack, unsigned int line_number)
 {
-	(void)stack;
-	(void)line_number;
+	stack_t *current = *stack;
+
+	if (!current)
+	{
+		dprintf(2, "L%u: can't pint, stack empty\n", line_number);
+		garbage_collection();
+		exit(EXIT_FAILURE);
+	}
+	printf("%d\n", current->n);
 }
 
 /**
@@ -71,9 +78,23 @@ void pint_list(stack_t **stack, unsigned int line_number)
  */
 void pop_list(stack_t **stack, unsigned int line_number)
 {
-	(void)stack;
-	(void)line_number;
+	stack_t *current = *stack;
+	stack_t *next;
+
+	if (!current)
+	{
+		dprintf(2, "L%u: can't pop an empty stack\n", line_number);
+		garbage_collection();
+		exit(EXIT_FAILURE);
+	}
+	next = current->next;
+	free(current);
+	*stack = next;
+	current = *stack;
+	if (current)
+		current->prev = NULL;
 }
+
 
 /**
  * swap_list - prints the value at the top of the stack, followed by a new line
