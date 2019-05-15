@@ -104,7 +104,18 @@ void pop_list(stack_t **stack, unsigned int line_number)
  */
 void swap_list(stack_t **stack, unsigned int line_number)
 {
-	(void)stack;
-	(void)line_number;
-}
+	stack_t *current = *stack;
+	stack_t *next;
+	int tmp;
 
+	if (!current || !current->next)
+	{
+		dprintf(2, "L%u: can't swap, stack too short\n", line_number);
+		garbage_collection();
+		exit(EXIT_FAILURE);
+	}
+	next = current->next;
+	tmp = current->n;
+	current->n = next->n;
+	next->n = tmp;
+}
