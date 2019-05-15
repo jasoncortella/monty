@@ -8,8 +8,18 @@
  */
 void add_list(stack_t **stack, unsigned int line_number)
 {
-	(void)stack;
-	(void)line_number;
+	stack_t *current = *stack;
+	stack_t *next;
+
+	if (!current || !current->next)
+	{
+		dprintf(2, "L%u: can't add, stack too short\n", line_number);
+		garbage_collection();
+		exit(EXIT_FAILURE);
+	}
+	next = current->next;
+	next->n += current->n;
+	pop_list(stack, line_number);
 }
 
 /**
