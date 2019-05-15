@@ -64,8 +64,26 @@ void pchar_list(stack_t **stack, unsigned int line_number)
  */
 void pstr_list(stack_t **stack, unsigned int line_number)
 {
-	(void)stack;
-	(void)line_number;
+	stack_t *current = *stack;
+
+	if (!current)
+	{
+		dprintf(2, "L%u: can't pstr, stack empty\n", line_number);
+		garbage_collection();
+		exit(EXIT_FAILURE);
+	}
+	while (current-> n != 0)
+	{
+		if ((current->n < 0) | (current->n > 127))
+		{
+			dprintf(2, "L%u: can't pstr, value out of range\n", line_number);
+			garbage_collection();
+			exit(EXIT_FAILURE);
+		}
+		putchar(current->n);
+		current = current->next;
+	}
+	putchar('\n');
 }
 
 /**
