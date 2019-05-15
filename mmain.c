@@ -36,8 +36,12 @@ int main(int argc, char **argv)
 	while ((read = getline(&line, &len, monty_file)) != -1)
 	{
 		line_number = i + 1;
-		printf("line %i: %s", line_number, line);
 		opcode = strtok(line, " ");
+		if (strcmp(opcode, "\n") == 0)
+		{
+			i++;
+			continue;
+		}
 		if (strcmp(opcode, "push") == 0)
 		{
 			copy = strtok(NULL, " ");
