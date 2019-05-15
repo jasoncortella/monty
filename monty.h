@@ -47,15 +47,18 @@ typedef struct info_s
 {
         FILE *monty_file;
 	char *line;
+	stack_t *stack;
+	unsigned int line_number;
 } info_t;
 
 extern info_t info;
 
 stack_t *push_add_node(stack_t **stack, char *copy);
 void pall_list(stack_t **stack, unsigned int line_number);
-int op_helper(stack_t **stack, char *line, int line_number);
+int op_helper(stack_t **stack, char *line);
 void free_stack(stack_t *head);
 void validate_and_open(int argc, char *argv);
 void read_lines(void);
+void garbage_collection(void);
 
 #endif

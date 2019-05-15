@@ -8,7 +8,7 @@ info_t info;
  * Return: -1 if op not found,
  *          0 if op executed successfully,
  */
-int op_helper(stack_t **stack, char *bcode, int line_number)
+int op_helper(stack_t **stack, char *bcode)
 {
 	int i, op_ret = -1; /* default return -1 if no match found */
 	instruction_t itbl[] = {
@@ -40,7 +40,7 @@ int op_helper(stack_t **stack, char *bcode, int line_number)
 	{
 		if (strcmp(op, itbl[i].opcode) == 0)
 		{
-			itbl[i].f(stack, line_number);
+			itbl[i].f(stack, info.line_number);
 			op_ret = 0;
 			break;
 		}

@@ -1,6 +1,7 @@
 #include "monty.h"
 
-info_t info = {NULL, NULL};
+info_t info = {NULL, NULL, NULL, 0};
+
 
 /**
  * main - entry point
@@ -13,8 +14,6 @@ int main(int argc, char **argv)
 {
 	validate_and_open(argc, argv[1]);
 	read_lines();
-	fclose(info.monty_file);
-	free(info.line);
-	/*free_stack(stack);*/
+	garbage_collection();
 	return (EXIT_SUCCESS);
 }

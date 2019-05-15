@@ -10,19 +10,19 @@ info_t info;
  */
 stack_t *push_add_node(stack_t **stack, char *copy)
 {
+	register int n;
 	stack_t *new = malloc(sizeof(stack_t));
-	int n;
 
 	if (!new)
 		return (NULL);
-/*	if (*pseudo* line is invalid) //note emsg below is unique to push
+	/* need to check if valid second argument */
+	if (0)
 	{
-		dprintf(2, "L%d: usage: push integer", line_number);
-		free_dlistint(*stack);
+		dprintf(2, "L%d: usage: push integer", info.line_number);
+		garbage_collection();
 		exit(EXIT_FAILURE);
 	}
-*/
-	n = atoi(copy); /* strtok modifies line, cuts first arg */
+	n = atoi(copy);
 	new->n = n;
 	new->next = *stack;
 	new->prev = NULL;
