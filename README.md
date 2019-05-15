@@ -72,24 +72,21 @@ What you should learn from this project:
 ### [15. stack, queue](./stack_and_queue.c)
 * The opcode stack sets the format of the data to a stack (LIFO). This is the default behavior of the program.
 * The opcode queue sets the format of the data to a queue (FIFO).
-* When switching mode:
-	The top of the stack becomes the front of the queue
-	The front of the queue becomes the top of the stack
 
 
 ### [16. holberton](/bf/1000-holberton.bf)
 * write a bf script that prints holberton, followed by a new line.
 
 
-### [17. add two digits](./bf/1001-add.bf)
+### [17. add two digits](/bf/1001-add.bf)
 * add two digits given by the user.
 
 
-### [18. multiplication](./bf/1002-mul.bf)
+### [18. multiplication](/bf/1002-mul.bf)
 * multiply two digits given by the user.
 
 
-### [19. Multiplication level up](./bf/1003-mul.bf)
+### [19. Multiplication level up](/bf/1003-mul.bf)
 * Multiply two digits given by the user.
 
 ---
