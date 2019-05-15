@@ -77,7 +77,7 @@ What you should learn from this project:
 	The front of the queue becomes the top of the stack
 
 
-### [16. holberton](./bf/1000-holberton.bf)
+### [16. holberton](/bf/1000-holberton.bf)
 * write a bf script that prints holberton, followed by a new line.
 
 
