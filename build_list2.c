@@ -42,8 +42,18 @@ void nop_list(stack_t **stack, unsigned int line_number)
  */
 void sub_list(stack_t **stack, unsigned int line_number)
 {
-	(void)stack;
-	(void)line_number;
+	stack_t *current = *stack;
+	stack_t *next;
+
+	if (!current || !current->next)
+	{
+		dprintf(2, "L%u: can't sub, stack too short\n", line_number);
+		garbage_collection();
+		exit(EXIT_FAILURE);
+	}
+	next = current->next;
+	next->n -= current->n;
+	pop_list(stack, line_number);
 }
 
 /**
@@ -55,9 +65,26 @@ void sub_list(stack_t **stack, unsigned int line_number)
  */
 void div_list(stack_t **stack, unsigned int line_number)
 {
-	(void)stack;
-	(void)line_number;
+	stack_t *current = *stack;
+	stack_t *next;
+
+	if (!current || !current->next)
+	{
+		dprintf(2, "L%u: can't div, stack too short\n", line_number);
+		garbage_collection();
+		exit(EXIT_FAILURE);
+	}
+	if (current->n == 0)
+	{
+		dprintf(2, "L%u: division by zero\n", line_number);
+		garbage_collection();
+		exit(EXIT_FAILURE);
+	}
+	next = current->next;
+	next->n /= current->n;
+	pop_list(stack, line_number);
 }
+
 
 /**
  * mul_list - multiplies the second top element of the stack
@@ -68,7 +95,16 @@ void div_list(stack_t **stack, unsigned int line_number)
  */
 void mul_list(stack_t **stack, unsigned int line_number)
 {
-	(void)stack;
-	(void)line_number;
-}
+	stack_t *current = *stack;
+	stack_t *next;
 
+	if (!current || !current->next)
+	{
+		dprintf(2, "L%u: can't mul, stack too short\n", line_number);
+		garbage_collection();
+		exit(EXIT_FAILURE);
+	}
+	next = current->next;
+	next->n *= current->n;
+	pop_list(stack, line_number);
+}
