@@ -27,25 +27,24 @@ void validate_and_open(int argc, char *filename)
  */
 void read_lines(void)
 {
-	register int i = 1, opresult = 0;
+	register int opresult = 0;
 	size_t len = 0;
 	ssize_t read;
 	char *opcode, *copy;
 
 	while ((read = getline(&info.line, &len, info.monty_file)) != -1)
 	{
-		info.line_number = i;
 		opcode = strtok(info.line, " ");
 		if (strcmp(opcode, "\n") == 0)
 		{
-			i++;
+			info.line_number++;
 			continue;
 		}
 		if (strcmp(opcode, "push") == 0)
 		{
 			copy = strtok(NULL, " ");
 			push_add_node(copy);
-			i++;
+			info.line_number++;
 			continue;
 		}
 		opresult = op_helper(&info.stack, opcode);
@@ -56,7 +55,7 @@ void read_lines(void)
 			garbage_collection();
 			exit(EXIT_FAILURE);
 		}
-		i++;
+		info.line_number++;
 	}
 }
 

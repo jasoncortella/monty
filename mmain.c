@@ -25,6 +25,6 @@ void init_info(void)
 	info.monty_file = NULL;
 	info.line = NULL;
 	info.stack = NULL;
-	info.line_number = 0;
+	info.line_number = 1;
 	info.queue_status = false;
 }
