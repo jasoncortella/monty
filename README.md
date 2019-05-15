@@ -15,6 +15,7 @@ What you should learn from this project:
 
 ### [0. push, pall](./build_list.c)
 * The opcode push pushes an element to the stack.
+* The opcode pall prints all the values on the stack, starting from the top of the stack.
 
 
 ### [1. pint](./build_list.c)
@@ -22,7 +23,7 @@ What you should learn from this project:
 
 
 ### [2. pop](./build_list.c)
-* The opcode swap swaps the top two elements of the stack.
+* The opcode pop removes the top element of the stack.
 
 
 ### [3. swap](./build_list.c)
