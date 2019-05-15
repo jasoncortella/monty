@@ -35,6 +35,11 @@ void read_lines(void)
 	while ((read = getline(&info.line, &len, info.monty_file)) != -1)
 	{
 		opcode = strtok(info.line, " ");
+		if (*opcode == '#')
+		{
+			info.line_number++;
+			continue;
+		}
 		if (strcmp(opcode, "\n") == 0)
 		{
 			info.line_number++;
