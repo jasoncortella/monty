@@ -7,21 +7,26 @@
 void push_add_node(char *value)
 {
 	register int n;
-	stack_t *new = malloc(sizeof(stack_t));
+	stack_t *new;
+	char *ptr = NULL;
 
-	if (!new)
+	ptr = strchr(value, '\n');
+	if (ptr)
+		*ptr = 0;
+	if (!strlen(value) || !is_valid_num(value))
 	{
-		dprintf(STDERR_FILENO, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
-	}
-	/* need to check if valid second argument */
-	if (0)
-	{
-		dprintf(STDERR_FILENO, "L%d: usage: push integer", info.line_number);
+		dprintf(STDERR_FILENO, "L%d: usage: push integer\n", info.line_number);
 		garbage_collection();
 		exit(EXIT_FAILURE);
 	}
 	n = atoi(value);
+	new = malloc(sizeof(stack_t));
+	if (!new)
+	{
+		dprintf(STDERR_FILENO, "Error: malloc failed\n");
+		garbage_collection();
+		exit(EXIT_FAILURE);
+	}
 	new->n = n;
 	new->next = info.stack;
 	new->prev = NULL;

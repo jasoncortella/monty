@@ -6,6 +6,8 @@
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <stdbool.h>
+#include <ctype.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -86,5 +88,8 @@ void read_lines(void);
 int op_helper(stack_t **stack, char *line);
 void free_stack(stack_t *head);
 void garbage_collection(void);
+
+/* string_helpers */
+_Bool is_valid_num(char *str);
 
 #endif

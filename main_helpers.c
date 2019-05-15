@@ -27,14 +27,14 @@ void validate_and_open(int argc, char *filename)
  */
 void read_lines(void)
 {
-	register int i = 0, opresult = 0;
+	register int i = 1, opresult = 0;
 	size_t len = 0;
 	ssize_t read;
 	char *opcode, *copy;
 
 	while ((read = getline(&info.line, &len, info.monty_file)) != -1)
 	{
-		info.line_number = i + 1;
+		info.line_number = i;
 		opcode = strtok(info.line, " ");
 		if (strcmp(opcode, "\n") == 0)
 		{
