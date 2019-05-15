@@ -15,6 +15,7 @@ What you should learn from this project:
 
 ### [0. push, pall](./build_list.c)
 * The opcode push pushes an element to the stack.
+* The opcode pall prints all the values on the stack, starting from the top of the stack.
 
 
 ### [1. pint](./build_list.c)
@@ -22,7 +23,7 @@ What you should learn from this project:
 
 
 ### [2. pop](./build_list.c)
-* The opcode swap swaps the top two elements of the stack.
+* The opcode pop removes the top element of the stack.
 
 
 ### [3. swap](./build_list.c)
@@ -33,7 +34,7 @@ What you should learn from this project:
 * The opcode add adds the top two elements of the stack.
 
 
-### [5. sub](./build_list2.c)
+### [5. nop](./build_list2.c)
 * The opcode nop doesn’t do anything.
 
 
@@ -72,24 +73,21 @@ What you should learn from this project:
 ### [15. stack, queue](./stack_and_queue.c)
 * The opcode stack sets the format of the data to a stack (LIFO). This is the default behavior of the program.
 * The opcode queue sets the format of the data to a queue (FIFO).
-* When switching mode:
-	The top of the stack becomes the front of the queue
-	The front of the queue becomes the top of the stack
 
 
-### [16. holberton](./bf/1000-holberton.bf)
+### [16. holberton](/bf/1000-holberton.bf)
 * write a bf script that prints holberton, followed by a new line.
 
 
-### [17. add two digits](./bf/1001-add.bf)
+### [17. add two digits](/bf/1001-add.bf)
 * add two digits given by the user.
 
 
-### [18. multiplication](./bf/1002-mul.bf)
+### [18. multiplication](/bf/1002-mul.bf)
 * multiply two digits given by the user.
 
 
-### [19. Multiplication level up](./bf/1003-mul.bf)
+### [19. Multiplication level up](/bf/1003-mul.bf)
 * Multiply two digits given by the user.
 
 ---
