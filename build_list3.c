@@ -111,6 +111,22 @@ void rotl_list(stack_t **stack, unsigned int line_number)
  */
 void rotr_list(stack_t **stack, unsigned int line_number)
 {
-	(void)stack;
+	stack_t *current = *stack, *prev;
+	int tmp;
+
 	(void)line_number;
+	if (current)
+	{
+		while (current->next)
+			current = current->next;
+		prev = current->prev;
+		tmp = current->n;
+		while (current->prev)
+		{
+			current->n = prev->n;
+			current = prev;
+			prev = current->prev;
+		}
+		current->n = tmp;
+	}
 }
