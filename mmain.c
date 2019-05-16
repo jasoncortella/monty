@@ -6,7 +6,7 @@ info_t info;
  * main - entry point
  * @argc: argument count
  * @argv: list of arguments
- * Return: 0 on success, 1 on error
+ * Return: 0 on success
  */
 int main(int argc, char **argv)
 {
@@ -18,7 +18,7 @@ int main(int argc, char **argv)
 }
 
 /**
- * init_info - initialize info struct with default values
+ * init_info - initializes info struct with default values
  */
 void init_info(void)
 {

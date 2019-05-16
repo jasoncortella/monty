@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * is_valid_num - checks if char arr is a valid number
+ * is_valid_num - checks if input is a valid integer
  * @str: input string
  * Return: true or false
  */

@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * validate_and_open - validate user input and open file
+ * validate_and_open - validates user input and opens file
  * @argc: argument count
  * @filename: name of file to be opened
  */
@@ -22,7 +22,7 @@ void validate_and_open(int argc, char *filename)
 }
 
 /**
- * read_lines - read instructions from file and process it
+ * read_lines - reads instructions from file and processes it
  */
 void read_lines(void)
 {
@@ -53,7 +53,7 @@ void read_lines(void)
 }
 
 /**
- *op_helper - finds and executes a function based on opcode
+ * op_helper - finds and executes a function based on opcode
  * ptbl: table of functions
  * @stack: double pointer to head of stack
  * @opcode: command to be executed

@@ -1,8 +1,8 @@
 #include "monty.h"
 
 /**
- * push_add_node_end - adds a new node at the end of a stack_t list.
- * @value: The value of the new node
+ * push_add_node_end - adds a new node at the end of a stack_t list
+ * @value: value of new node
  */
 void push_add_node_end(char *value)
 {

@@ -3,9 +3,8 @@
 /**
  * mod_list - computes the rest of the division of the second top element
  * of the stack by the top element of the stack
- * @stack: Pointer to the head of the list
+ * @stack: pointer to the head of the list
  * @line_number: line number of instruction
- * Return: Nothing
  */
 void mod_list(stack_t **stack, unsigned int line_number)
 {
@@ -14,13 +13,13 @@ void mod_list(stack_t **stack, unsigned int line_number)
 
 	if (!current || !current->next)
 	{
-		dprintf(2, "L%u: can't mod, stack too short\n", line_number);
+		dprintf(STDERR_FILENO, "L%u: can't mod, stack too short\n", line_number);
 		garbage_collection();
 		exit(EXIT_FAILURE);
 	}
 	if (current->n == 0)
 	{
-		dprintf(2, "L%u: division by zero\n", line_number);
+		dprintf(STDERR_FILENO, "L%u: division by zero\n", line_number);
 		garbage_collection();
 		exit(EXIT_FAILURE);
 	}
@@ -31,9 +30,8 @@ void mod_list(stack_t **stack, unsigned int line_number)
 
 /**
  * pchar_list - prints the char at the top of the stack, followed by a new line
- * @stack: Pointer to the head of the list
+ * @stack: pointer to the head of the list
  * @line_number: line number of instruction
- * Return: Nothing
  */
 void pchar_list(stack_t **stack, unsigned int line_number)
 {
@@ -41,13 +39,14 @@ void pchar_list(stack_t **stack, unsigned int line_number)
 
 	if (!current)
 	{
-		dprintf(2, "L%u: can't pchar, stack empty\n", line_number);
+		dprintf(STDERR_FILENO, "L%u: can't pchar, stack empty\n", line_number);
 		garbage_collection();
 		exit(EXIT_FAILURE);
 	}
-	if ((current->n < 0) | (current->n > 127))
+	if (current->n < 0 || current->n > 127)
 	{
-		dprintf(2, "L%u: can't pchar, value out of range\n", line_number);
+		dprintf(STDERR_FILENO, "L%u: can't pchar, ", line_number);
+		dprintf(STDERR_FILENO, "value out of range\n");
 		garbage_collection();
 		exit(EXIT_FAILURE);
 	}
@@ -58,9 +57,8 @@ void pchar_list(stack_t **stack, unsigned int line_number)
 /**
  * pstr_list - prints the string starting at the top of the stack,
  * followed by a new line
- * @stack: Pointer to the head of the list
+ * @stack: pointer to the head of the list
  * @line_number: line number of instruction
- * Return: Nothing
  */
 void pstr_list(stack_t **stack, unsigned int line_number)
 {
@@ -69,7 +67,7 @@ void pstr_list(stack_t **stack, unsigned int line_number)
 	(void)line_number;
 	while (current && current->n != 0)
 	{
-		if ((current->n < 0) | (current->n > 127))
+		if (current->n < 0 || current->n > 127)
 			break;
 		putchar(current->n);
 		current = current->next;
@@ -79,14 +77,13 @@ void pstr_list(stack_t **stack, unsigned int line_number)
 
 /**
  * rotl_list - rotates the stack to the top
- * @stack: Pointer to the head of the list
+ * @stack: pointer to the head of the list
  * @line_number: line number of instruction
- * Return: Nothing
  */
 void rotl_list(stack_t **stack, unsigned int line_number)
 {
+	register int tmp;
 	stack_t *current = *stack, *next;
-	int tmp;
 
 	(void)line_number;
 	if (current)
@@ -105,14 +102,13 @@ void rotl_list(stack_t **stack, unsigned int line_number)
 
 /**
  * rotr_list - rotates the stack to the bottom
- * @stack: Pointer to the head of the list
+ * @stack: pointer to the head of the list
  * @line_number: line number of instruction
- * Return: Nothing
  */
 void rotr_list(stack_t **stack, unsigned int line_number)
 {
+	register int tmp;
 	stack_t *current = *stack, *prev;
-	int tmp;
 
 	(void)line_number;
 	if (current)
