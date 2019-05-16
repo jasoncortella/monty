@@ -46,7 +46,7 @@ typedef struct instruction_s
  * @stack: stack
  * @line_number: line number
  * @queue_status: off by default
- * Description: file and line
+ * Description: global struct with program info
  */
 typedef struct info_s
 {
