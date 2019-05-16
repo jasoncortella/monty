@@ -3,7 +3,6 @@
 /**
  * set_stack - sets the format of the data to a stack (LIFO). This
  * is the default behavior of the program.
- * top element of the stack
  * @stack: pointer to the head of the list
  * @line_number: line number of instruction
  */
