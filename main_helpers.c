@@ -33,7 +33,7 @@ void read_lines(void)
 	while ((read = getline(&info.line, &len, info.monty_file)) != -1)
 	{
 		opcode = strtok(info.line, " ");
-		if (*opcode == '#' || !strcmp(opcode, "\n"))
+		if (*opcode == '#' || *opcode == '\n')
 		{
 			info.line_number++;
 			continue;
@@ -112,7 +112,8 @@ void free_stack(stack_t *head)
 }
 
 /**
- * garbage_collection - frees all mallocced data structures
+ * garbage_collection - frees all mallocced data structures and closes
+ * file decriptor
  */
 void garbage_collection(void)
 {
