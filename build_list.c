@@ -1,8 +1,8 @@
 #include "monty.h"
 
 /**
- * push_add_node - adds a new node at the beginning of a stack_t list.
- * @value: The value of the new node
+ * push_add_node - adds a new node at the beginning of a stack_t list
+ * @value: value of new node
  */
 void push_add_node(char *value)
 {
@@ -36,10 +36,9 @@ void push_add_node(char *value)
 }
 
 /**
- * pall_list - prints all the elements of a stack_t list.
- * @stack: Pointer to the head of the list
+ * pall_list - prints all the elements of a stack_t list
+ * @stack: pointer to the head of the list
  * @line_number: line number of instruction
- * Return: Nothing
  */
 void pall_list(stack_t **stack, unsigned int line_number)
 {
@@ -52,10 +51,9 @@ void pall_list(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * pint_list -prints the value at the top of the stack, followed by a new line
- * @stack: Pointer to the head of the list
+ * pint_list - prints the value at the top of the stack, followed by a new line
+ * @stack: pointer to the head of the list
  * @line_number: line number of instruction
- * Return: Nothing
  */
 void pint_list(stack_t **stack, unsigned int line_number)
 {
@@ -63,7 +61,7 @@ void pint_list(stack_t **stack, unsigned int line_number)
 
 	if (!current)
 	{
-		dprintf(2, "L%u: can't pint, stack empty\n", line_number);
+		dprintf(STDERR_FILENO, "L%u: can't pint, stack empty\n", line_number);
 		garbage_collection();
 		exit(EXIT_FAILURE);
 	}
@@ -71,10 +69,9 @@ void pint_list(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * pop_list -  prints all the elements of a stack_t list
- * @stack: Pointer to the head of the list
+ * pop_list - removes the top element of the stack
+ * @stack: pointer to the head of the list
  * @line_number: line number of instruction
- * Return: Nothing
  */
 void pop_list(stack_t **stack, unsigned int line_number)
 {
@@ -83,7 +80,7 @@ void pop_list(stack_t **stack, unsigned int line_number)
 
 	if (!current)
 	{
-		dprintf(2, "L%u: can't pop an empty stack\n", line_number);
+		dprintf(STDERR_FILENO, "L%u: can't pop an empty stack\n", line_number);
 		garbage_collection();
 		exit(EXIT_FAILURE);
 	}
@@ -95,22 +92,20 @@ void pop_list(stack_t **stack, unsigned int line_number)
 		current->prev = NULL;
 }
 
-
 /**
- * swap_list - prints the value at the top of the stack, followed by a new line
- * @stack: Pointer to the head of the list
+ * swap_list - swaps the top two elements of the stack.
+ * @stack: pointer to the head of the list
  * @line_number: line number of instruction
- * Return: Nothing
  */
 void swap_list(stack_t **stack, unsigned int line_number)
 {
+	register int tmp;
 	stack_t *current = *stack;
 	stack_t *next;
-	int tmp;
 
 	if (!current || !current->next)
 	{
-		dprintf(2, "L%u: can't swap, stack too short\n", line_number);
+		dprintf(STDERR_FILENO, "L%u: can't swap, stack too short\n", line_number);
 		garbage_collection();
 		exit(EXIT_FAILURE);
 	}
