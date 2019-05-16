@@ -21,7 +21,6 @@ void validate_and_open(int argc, char *filename)
 	}
 }
 
-
 /**
  * read_lines - read instructions from file and process it
  */
@@ -48,13 +47,7 @@ void read_lines(void)
 			info.line_number++;
 			continue;
 		}
-		if (op_helper(&info.stack, opcode) == -1)
-		{
-			dprintf(STDERR_FILENO, "L%d: ", info.line_number);
-			dprintf(STDERR_FILENO, "unknown instruction %s\n", opcode);
-			garbage_collection();
-			exit(EXIT_FAILURE);
-		}
+		op_helper(&info.stack, opcode);
 		info.line_number++;
 	}
 }
@@ -63,14 +56,12 @@ void read_lines(void)
  *op_helper - finds and executes a function based on opcode
  * ptbl: table of functions
  * @stack: double pointer to head of stack
- * @bcode: command to be executed
- * Return: -1 if op not found,
- *          0 if op executed successfully,
+ * @opcode: command to be executed
  */
-int op_helper(stack_t **stack, char *bcode)
+void op_helper(stack_t **stack, char *opcode)
 {
-	register int i, op_ret = -1;
-	char *op;
+	register int i;
+	char *command;
 	instruction_t itbl[] = {
 		{"pall", pall_list},
 		{"pint", pint_list},
@@ -91,18 +82,17 @@ int op_helper(stack_t **stack, char *bcode)
 		{NULL, NULL}
 	};
 
-	op = strtok(bcode, "\n");
-
+	command = strtok(opcode, "\n");
 	for (i = 0; itbl[i].opcode; i++)
-	{
-		if (strcmp(op, itbl[i].opcode) == 0)
+		if (strcmp(command, itbl[i].opcode) == 0)
 		{
 			itbl[i].f(stack, info.line_number);
-			op_ret = 0;
-			break;
+			return;
 		}
-	}
-	return (op_ret);
+	dprintf(STDERR_FILENO, "L%d: ", info.line_number);
+	dprintf(STDERR_FILENO, "unknown instruction %s\n", opcode);
+	garbage_collection();
+	exit(EXIT_FAILURE);
 }
 
 /**

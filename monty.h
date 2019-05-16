@@ -87,7 +87,7 @@ void set_queue(stack_t **stack, unsigned int line_number);
 /* main_helpers */
 void validate_and_open(int argc, char *argv);
 void read_lines(void);
-int op_helper(stack_t **stack, char *line);
+void op_helper(stack_t **stack, char *opcode);
 void free_stack(stack_t *head);
 void garbage_collection(void);
 
